@@ -1,0 +1,1 @@
+define(["react"],function(){"use strict"});

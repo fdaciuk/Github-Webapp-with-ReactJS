@@ -1,6 +1,11 @@
 /** @jsx React.DOM */
 
-define([ 'react' ], function( React ) {
+define([
+    'react',
+    'components/SearchBar'
+], function( React, SearchBar ) {
+    'use strict';
+
     var GithubContainer = function() {
         var $public = {};
 

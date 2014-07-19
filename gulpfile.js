@@ -1,41 +1,61 @@
-var gulp    = require( 'gulp' );
-var react   = require( 'gulp-react' );
-var notify  = require( 'gulp-notify' );
-var changed = require( 'gulp-changed' );
-var uglify  = require( 'gulp-uglify' );
-var plumber = require( 'gulp-plumber' );
-var minifycss = require( 'gulp-minify-css' );
+'use strict';
 
-var SRC = './src/js/**/*.js';
-var DEST = './public/js';
-var SRC_CSS = './src/css/**/*.css';
-var DEST_CSS = './public/css';
+var gulp      = require( 'gulp' );
+var react     = require( 'gulp-react' );
+var notify    = require( 'gulp-notify' );
+var changed   = require( 'gulp-changed' );
+var uglify    = require( 'gulp-uglify' );
+var plumber   = require( 'gulp-plumber' );
+var minifycss = require( 'gulp-minify-css' );
+var jshint    = require( 'gulp-jshint' );
+var map       = require( 'map-stream' );
+
+var paths = {
+    src_js      : './src/js/**/*.js',
+    dest_js     : './public/js',
+    src_css  : './src/css/**/*.css',
+    dest_css : './public/css'
+};
 
 gulp.task( 'react', function() {
-    gulp.src( SRC )
-    .pipe( changed( DEST ) )
+    gulp.src( paths.src_js )
+    .pipe( changed( paths.dest_js ) )
     .pipe(
         plumber({
             errorHandler: notify.onError( 'Error: <%= error.message %>' )
         })
     )
     .pipe( react() )
+    .pipe( jshint() )
+    .pipe( notify(function( file ) {
+        if( file.jshint.success ) {
+            return false;
+        }
+
+        var errors = file.jshint.results.map(function (data) {
+            if (data.error) {
+                return "(" + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
+            }
+        }).join("\n");
+
+        return file.relative + " (" + file.jshint.results.length + " errors)\n" + errors;
+    }) )
     .pipe( uglify() )
-    .pipe( gulp.dest( DEST ) )
+    .pipe( gulp.dest( paths.dest_js ) )
     .pipe( notify( 'File <%= file.relative %> compiled!' ) );
 });
 
 gulp.task( 'css', function() {
-    gulp.src( SRC_CSS )
+    gulp.src( paths.src_css )
     .pipe( minifycss() )
-    .pipe( gulp.dest( DEST_CSS ) )
+    .pipe( gulp.dest( paths.dest_css ) )
     .pipe( notify( 'File <%= file.relative %> compiled!' ) );
 });
 
 gulp.task( 'default', function() {
     var watchers = [
-        gulp.watch( SRC, [ 'react' ] ),
-        gulp.watch( SRC_CSS, [ 'css' ] )
+        gulp.watch( paths.src_js, [ 'react' ] ),
+        gulp.watch( paths.src_css, [ 'css' ] )
     ];
 
     watchers.forEach(function( watch ) {
