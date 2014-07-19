@@ -1,0 +1,1 @@
+define(["react"],function(e){var r=function(){var r={};return r.render=function(){return e.DOM.div(null,e.DOM.input({type:"text",name:"ghusername",id:"ghusername",placeholder:"Github username..."}),e.DOM.a({href:"#",id:"ghsubmitbtn"},"Pull User Data"),e.DOM.div({id:"ghapidata","class":"clearfix"}))},r};return e.createClass(r())});
