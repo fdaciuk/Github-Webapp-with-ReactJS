@@ -7,22 +7,6 @@ define(function() {
 
         // ------------------------------
 
-        $private.callbacks = {};
-
-        // ------------------------------
-
-        $public.done = function done( callback ) {
-
-        };
-
-        // ------------------------------
-
-        $public.error = function error( callback ) {
-
-        };
-
-        // ------------------------------
-
         return $public;
     };
 
