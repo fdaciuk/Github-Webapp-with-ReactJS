@@ -1,4 +1,6 @@
 ;(function() {
+    'use strict';
+
     requirejs.config({
         baseUrl: 'public/js/',
         paths : {
@@ -11,6 +13,6 @@
     });
 
     requirejs([ 'react' ], function() {
-        requirejs([ 'controllers/ControllerMain' ]);
+        requirejs([ 'components/MainComponent' ]);
     });
 })();

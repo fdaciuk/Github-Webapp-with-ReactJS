@@ -1,0 +1,1 @@
+define(function(){"use strict";var n=function(){var n={},r={};return n.callbacks={},r.done=function(){},r.error=function(){},r};return n});

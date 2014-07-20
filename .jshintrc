@@ -11,10 +11,12 @@
   "eqnull"  : true,
   "node"    : true,
   "globals" : {
-    "console"   : true,
-    "define"    : true,
-    "require"   : true,
-    "requirejs" : true,
-    "document"  : true
+    "console"        : true,
+    "define"         : true,
+    "require"        : true,
+    "requirejs"      : true,
+    "document"       : true,
+    "XMLHttpRequest" : true,
+    "ActiveXObject"  : true
   }
 }

@@ -1,1 +1,1 @@
-define(["react","components/SearchBar","components/GithubAPIData"],function(a,e,n){"use strict";var r=function(){var r={};return r.render=function(){return a.DOM.div({"class":"clearfix"},e(null),n({className:"ghapidata"}))},r};return a.createClass(r())});
+define(["react","components/SearchBar","components/GithubAPIDataContainer"],function(a,e,n){"use strict";var r=function(){var r={};return r.render=function(){return a.DOM.div({className:"clearfix"},e(null),n({className:"ghapidata"}))},r};return a.createClass(r())});

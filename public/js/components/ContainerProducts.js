@@ -1,1 +1,0 @@
-define(["react"],function(r){var n=r.createClass({displayName:"ContainerProducts",render:function(){var n=[];return this.props.products.forEach(function(e){n.push(r.DOM.span(null,e.category))}),r.DOM.div(null,"Opa: ",r.DOM.pre(null,n))}});return n});

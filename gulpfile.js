@@ -10,7 +10,7 @@ var minifycss = require( 'gulp-minify-css' );
 var jshint    = require( 'gulp-jshint' );
 
 var paths = {
-    src_js      : './src/js/**/*.js',
+    src_js      : './src/js/**/*.{js,jsx}',
     dest_js     : './public/js',
     src_css  : './src/css/**/*.css',
     dest_css : './public/css'
@@ -18,13 +18,13 @@ var paths = {
 
 gulp.task( 'react', function() {
     gulp.src( paths.src_js )
-    .pipe( changed( paths.dest_js ) )
     .pipe(
         plumber({
             errorHandler: notify.onError( 'Error: <%= error.message %>' )
         })
     )
     .pipe( react() )
+    .pipe( changed( paths.dest_js ) )
     .pipe( jshint() )
     .pipe( notify(function( file ) {
         if( file.jshint.success ) {

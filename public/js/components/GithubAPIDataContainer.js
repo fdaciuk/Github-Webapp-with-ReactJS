@@ -1,0 +1,1 @@
+define(["react"],function(r){"use strict";var e=function(){var e={};return e.render=function(){return r.DOM.div({className:this.props.className})},e};return r.createClass(e())});

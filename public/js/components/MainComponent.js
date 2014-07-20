@@ -1,0 +1,1 @@
+define(["react","components/GithubContainer"],function(e,n){"use strict";e.renderComponent(n(null),document.querySelector(".content"))});

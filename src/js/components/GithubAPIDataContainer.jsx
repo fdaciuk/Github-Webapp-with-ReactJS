@@ -1,6 +1,9 @@
 /** @jsx React.DOM */
+
 define([ 'react' ], function( React ) {
-    var GithubAPIData = function() {
+    'use strict';
+
+    var GithubAPIDataContainer = function() {
         var $public = {};
 
         // ------------------------------
@@ -18,5 +21,5 @@ define([ 'react' ], function( React ) {
         return $public;
     };
 
-    return React.createClass( GithubAPIData() );
+    return React.createClass( GithubAPIDataContainer() );
 });

@@ -3,8 +3,8 @@
 define([
     'react',
     'components/SearchBar',
-    'components/GithubAPIData'
-], function( React, SearchBar,GithubAPIData ) {
+    'components/GithubAPIDataContainer'
+], function( React, SearchBar,GithubAPIDataContainer ) {
     'use strict';
 
     var GithubContainer = function() {
@@ -14,9 +14,9 @@ define([
 
         $public.render = function render() {
             return (
-                <div class="clearfix">
+                <div className="clearfix">
                     <SearchBar />
-                    <GithubAPIData className="ghapidata" />
+                    <GithubAPIDataContainer className="ghapidata" />
                 </div>
             );
         };
