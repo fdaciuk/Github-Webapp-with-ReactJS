@@ -2,8 +2,9 @@
 
 define([
     'react',
-    'components/SearchBar'
-], function( React, SearchBar ) {
+    'components/SearchBar',
+    'components/GithubAPIData'
+], function( React, SearchBar,GithubAPIData ) {
     'use strict';
 
     var GithubContainer = function() {
@@ -13,10 +14,9 @@ define([
 
         $public.render = function render() {
             return (
-                <div>
-                    <input type="text" name="ghusername" id="ghusername" placeholder="Github username..." />
-                    <a href="#" id="ghsubmitbtn">Pull User Data</a>
-                    <div id="ghapidata" class="clearfix"></div>
+                <div class="clearfix">
+                    <SearchBar />
+                    <GithubAPIData className="ghapidata" />
                 </div>
             );
         };

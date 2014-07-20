@@ -1,1 +1,1 @@
-define(["react","components/GithubContainer"],function(n,e){n.renderComponent(e(null),window.content)});
+define(["react","components/GithubContainer"],function(n,e){n.renderComponent(e(null),document.querySelector(".content"))});

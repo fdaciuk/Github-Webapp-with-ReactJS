@@ -76,7 +76,7 @@ a:hover {
 }
 
 /* page structure */
-#w {
+.main {
   display: block;
   width: 800px;
   margin: 0 auto;
@@ -90,12 +90,12 @@ a:hover {
   border-radius: 4px;
 }
 
-#ghapidata {
+.ghapidata {
   display: block;
   padding: 25px 0;
 }
 
-#loader {
+.loader {
   display: block;
   width: 200px;
   height: 200px;
@@ -172,7 +172,7 @@ a:hover {
 }
 
 /* input field */
-#ghusername {
+.ghusername {
   display: block;
   padding: 5px 8px;
   font-size: 1.4em;
@@ -181,7 +181,8 @@ a:hover {
   margin-bottom: 15px;
 }
 
-#ghsubmitbtn {
+.ghsubmitbtn {
+  cursor: pointer;
   display: inline-block;
   padding: 8px 18px;
   font-size: 14px;
@@ -202,7 +203,7 @@ a:hover {
   -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
-#ghsubmitbtn:hover {
+.ghsubmitbtn:hover {
   background-color: #dadada;
   background-image: -webkit-linear-gradient(#eaeaea, #dadada);
   background-image: -moz-linear-gradient(#eaeaea, #dadada);
@@ -211,7 +212,7 @@ a:hover {
   background-image: linear-gradient(#eaeaea, #dadada);
   border-color: #ccc #ccc #b5b5b5;
 }
-#ghsubmitbtn:active {
+.ghsubmitbtn:active {
   background-color:#dadada;
   background-image: none;
   border-color: #b5b5b5;

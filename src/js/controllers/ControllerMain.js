@@ -6,6 +6,6 @@ define([
 ], function( React, GithubContainer ) {
     React.renderComponent(
         <GithubContainer />,
-        window.content
+        document.querySelector( '.content' )
     );
 });

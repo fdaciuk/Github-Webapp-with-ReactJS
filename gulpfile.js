@@ -8,7 +8,6 @@ var uglify    = require( 'gulp-uglify' );
 var plumber   = require( 'gulp-plumber' );
 var minifycss = require( 'gulp-minify-css' );
 var jshint    = require( 'gulp-jshint' );
-var map       = require( 'map-stream' );
 
 var paths = {
     src_js      : './src/js/**/*.js',

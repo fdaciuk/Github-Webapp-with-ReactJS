@@ -1,1 +1,1 @@
-define(["react"],function(){"use strict"});
+define(["react"],function(e){"use strict";var n=function(){var n={};return n.render=function(){return e.DOM.form(null,e.DOM.input({type:"text",name:"ghusername",id:"ghusername",placeholder:"Github username...",className:"ghusername"}),e.DOM.button({className:"ghsubmitbtn"},"Pull User Data"))},n};return e.createClass(n())});
