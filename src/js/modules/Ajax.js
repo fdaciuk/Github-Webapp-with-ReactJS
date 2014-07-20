@@ -38,11 +38,6 @@ define(function() {
     $private.XHRConnection = function XHRConnection( type, url, data ) {
         var XHR = new XMLHttpRequest();
 
-        $private.methods = {
-            done  : function() {},
-            error : function() {}
-        };
-
         XHR.open( type, url, true );
         XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
         XHR.addEventListener( 'readystatechange', $private.readyStateChange, false );
@@ -70,6 +65,11 @@ define(function() {
 
     $private.promises = function promises() {
         var callbacks = $private.callbacks;
+
+        $private.methods = {
+            done  : function() {},
+            error : function() {}
+        };
 
         callbacks.done = function( callback ) {
             $private.methods.done = callback;

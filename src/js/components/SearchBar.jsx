@@ -12,23 +12,10 @@ define([
 
         // ------------------------------
 
-        $private.clickHandle = function clickHandle( e ) {
-            console.log( 'click handle' );
-            Ajax.get( 'https://api.github.com/users/fdaciuk' )
-                .done(function( data, xhr ) {
-                    console.log( data );
-                })
-                .error(function( data, xhr ) {
-
-                });
-        };
-
-        // ------------------------------
-
         $public.render = function render() {
             return (
                 <div>
-                    <input type="text" name="ghusername" id="ghusername" placeholder="Github username..." className="ghusername" />
+                    <input type="text" name="ghusername" placeholder="Github username..." className="ghusername" />
                     <button
                         className="ghsubmitbtn"
                         onClick={$private.clickHandle}>
@@ -36,6 +23,29 @@ define([
                     </button>
                 </div>
             );
+        };
+
+        // ------------------------------
+
+        $private.clickHandle = function clickHandle( e ) {
+            console.log( 'click handle' );
+            var getUserData = Ajax.get( 'https://api.github.com/users/fdaciuk' );
+
+            getUserData
+                .done( $private.requestSuccess )
+                .error( $private.requestError );
+        };
+
+        // ------------------------------
+
+        $private.requestSuccess = function requestSuccess( data, xhr ) {
+            console.log( 'success:', data );
+        };
+
+        // ------------------------------
+
+        $private.requestError = function requestError( data, xhr ) {
+            console.log( 'error:', data );
         };
 
         // ------------------------------
