@@ -15,7 +15,7 @@ define([
         $public.render = function render() {
             return (
                 <div>
-                    <input type="text" name="ghusername" placeholder="Github username..." className="ghusername" />
+                    <input type="text" placeholder="Github username..." className="ghusername" />
                     <button
                         className="ghsubmitbtn"
                         onClick={$private.clickHandle}>
@@ -29,9 +29,8 @@ define([
 
         $private.clickHandle = function clickHandle( e ) {
             console.log( 'click handle' );
-            var getUserData = Ajax.get( 'https://api.github.com/users/fdaciuk' );
 
-            getUserData
+            Ajax.get( 'https://api.github.com/users/fdaciuk' )
                 .done( $private.requestSuccess )
                 .error( $private.requestError );
         };
