@@ -40,14 +40,12 @@ define([
         // ------------------------------
 
         $private.onSearchUserSubmit = function onSearchUserSubmit( user ) {
-            // console.log( 'USER:', user );
             this.setState({ user: user });
         };
 
         // ------------------------------
 
         $private.onSearchReposSubmit = function onSearchReposSubmit( repos ) {
-            // console.log( 'REPOS:', repos );
             this.setState({ repos: repos });
         };
 

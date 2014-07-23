@@ -21,13 +21,8 @@ define([ 'react' ], function( React ) {
 
             return (
                 <div className="repolist clearfix">
-                    <p>
-                        <strong>Repos list:</strong>
-                    </p>
-
-                    <ul>
-                        {reposNode}
-                    </ul>
+                    <p><strong>Repos list:</strong></p>
+                    <ul>{reposNode}</ul>
                 </div>
             );
         };
@@ -36,11 +31,7 @@ define([ 'react' ], function( React ) {
 
         $private.getRepos = function getRepos( repos ) {
             return repos.map(function( repo ) {
-                return (
-                    <li>
-                        <a href={repo.html_url} target="_blank">{repo.name}</a>
-                    </li>
-                );
+                return ( <li><a href={repo.html_url} target="_blank">{repo.name}</a></li> );
             });
         };
 
