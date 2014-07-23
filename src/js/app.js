@@ -11,13 +11,11 @@
     };
 
     requirejs.config({
-        baseUrl: getLocation() + '/public/js/',
+        baseUrl: getLocation() + '/public/js',
         paths : {
             react          : 'vendor/react.min',
-            controllers    : 'controllers/',
-            models         : 'models/',
-            modules        : 'modules/',
-            components     : 'components/'
+            modules        : 'modules',
+            components     : 'components'
         }
     });
 
