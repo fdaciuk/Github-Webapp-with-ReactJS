@@ -29,22 +29,25 @@ define([
 
         $private.clickHandle = function clickHandle( e ) {
             var user = ( this.refs.username.getDOMNode().value || false );
+            var ajaxUser = new Ajax();
+            var ajaxRepos = new Ajax();
 
             if( ! user ) {
                 console.log( 'Nothing found' );
                 return this.props.onSearchUserSubmit({});
             }
 
-            return Ajax.get( 'https://api.github.com/users/' + user )
+            ajaxUser.get( 'https://api.github.com/users/' + user )
                 .done( $private.requestSuccess.bind( this ) );
+
+            ajaxRepos.get( 'https://api.github.com/users/' + this.refs.username.getDOMNode().value + '/repos' )
+                .done( $private.requestReposSuccess.bind( this ) );
         };
 
         // ------------------------------
 
         $private.requestSuccess = function requestSuccess( data, xhr ) {
             this.props.onSearchUserSubmit( data );
-            Ajax.get( 'https://api.github.com/users/' + this.refs.username.getDOMNode().value + '/repos' )
-                .done( $private.requestReposSuccess.bind( this ) );
         };
 
         // ------------------------------
