@@ -2,7 +2,7 @@
     'use strict';
 
     requirejs.config({
-        baseUrl: 'public/js/',
+        baseUrl: './public/js/',
         paths : {
             react          : 'vendor/react.min',
             controllers    : 'controllers/',
