@@ -15,10 +15,10 @@ define([
         $public.render = function render() {
             return (
                 <div>
-                    <input type="text" placeholder="Github username..." className="ghusername" />
+                    <input type="text" placeholder="Github username" ref="username" className="ghusername" />
                     <button
                         className="ghsubmitbtn"
-                        onClick={$private.clickHandle}>
+                        onClick={$private.clickHandle.bind( this )}>
                         Pull User Data
                     </button>
                 </div>
@@ -28,23 +28,29 @@ define([
         // ------------------------------
 
         $private.clickHandle = function clickHandle( e ) {
-            console.log( 'click handle' );
+            var user = ( this.refs.username.getDOMNode().value || false );
 
-            Ajax.get( 'https://api.github.com/users/fdaciuk' )
-                .done( $private.requestSuccess )
-                .error( $private.requestError );
+            if( ! user ) {
+                console.log( 'Nothing found' );
+                return this.props.onSearchUserSubmit({});
+            }
+
+            return Ajax.get( 'https://api.github.com/users/' + user )
+                .done( $private.requestSuccess.bind( this ) );
         };
 
         // ------------------------------
 
         $private.requestSuccess = function requestSuccess( data, xhr ) {
-            console.log( 'success:', data );
+            this.props.onSearchUserSubmit( data );
+            Ajax.get( 'https://api.github.com/users/' + this.refs.username.getDOMNode().value + '/repos' )
+                .done( $private.requestReposSuccess.bind( this ) );
         };
 
         // ------------------------------
 
-        $private.requestError = function requestError( data, xhr ) {
-            console.log( 'error:', data );
+        $private.requestReposSuccess = function requestReposSuccess( data, xhr ) {
+            this.props.onSearchReposSubmit( data );
         };
 
         // ------------------------------

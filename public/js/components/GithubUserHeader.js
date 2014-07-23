@@ -1,0 +1,1 @@
+define(["react"],function(r){"use strict";var a=function(){var a={};return a.render=function(){var a=this.props.userdata;return r.DOM.h2(null,a.name,r.DOM.span({className:"smallname"},"(@",r.DOM.a({href:a.html_url,target:"_blank"},a.login),")"))},a};return r.createClass(a())});

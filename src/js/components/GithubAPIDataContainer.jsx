@@ -1,48 +1,43 @@
 /** @jsx React.DOM */
 
-define([ 'react' ], function( React ) {
+define([
+    'react',
+    'components/GithubUserHeader',
+    'components/GithubUserData',
+    'components/GithubUserRepos'
+], function( React, GithubUserHeader, GithubUserData, GithubUserRepos ) {
     'use strict';
 
     var GithubAPIDataContainer = function() {
         var $public = {};
+        var $private = {};
 
         // ------------------------------
 
         $public.render = function render() {
+            var user = this.props.userdata;
+            var repos = this.props.reposdata;
+            var renderHTML = $private.renderOk.call( this, user, repos );
+
+            if( ! user.name ) {
+                renderHTML = <h2>No User Info Found</h2>;
+            }
+
             return (
                 <div className={this.props.className}>
-                    <h2>
-                        Fernando Daciuk
-                        <span className="smallname">
-                            (@<a href="https://github.com/fdaciuk" target="_blank">fdaciuk</a>)
-                        </span>
-                    </h2>
+                    {renderHTML}
+                </div>
+            );
+        };
 
-                    <div className="ghcontent">
-                        <div className="avi">
-                            <a href="https://github.com/fdaciuk" target="_blank">
-                                <img src="https://avatars.githubusercontent.com/u/487669?" width="80" height="80" alt="fdaciuk" />
-                            </a>
-                        </div>
+        // ------------------------------
 
-                        <p>
-                            Followers: 73 - Following: 128
-                            <br />
-                            Repos: 59
-                        </p>
-                    </div>
-
-                    <div className="repolist clearfix">
-                        <p>
-                            <strong>Repos list:</strong>
-                        </p>
-
-                        <ul>
-                            <li>
-                                <a href="https://github.com/fdaciuk/adm-zip" target="_blank">adm-zip</a>
-                            </li>
-                        </ul>
-                    </div>
+        $private.renderOk = function renderOk( user, repos ) {
+            return (
+                <div>
+                    <GithubUserHeader userdata={user} />
+                    <GithubUserData userdata={user} />
+                    <GithubUserRepos reposdata={repos} />
                 </div>
             );
         };

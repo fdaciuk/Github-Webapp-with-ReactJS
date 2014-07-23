@@ -67,3 +67,5 @@ gulp.task( 'default', function() {
         });
     });
 });
+
+gulp.task( 'w', [ 'default' ] );
