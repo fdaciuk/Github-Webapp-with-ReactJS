@@ -33,20 +33,19 @@ define([
             var ajaxRepos = new Ajax();
 
             if( ! user ) {
-                console.log( 'Nothing found' );
                 return this.props.onSearchUserSubmit({});
             }
 
             ajaxUser.get( 'https://api.github.com/users/' + user )
-                .done( $private.requestSuccess.bind( this ) );
+                .done( $private.requestUserSuccess.bind( this ) );
 
-            ajaxRepos.get( 'https://api.github.com/users/' + this.refs.username.getDOMNode().value + '/repos' )
+            ajaxRepos.get( 'https://api.github.com/users/' + user + '/repos' )
                 .done( $private.requestReposSuccess.bind( this ) );
         };
 
         // ------------------------------
 
-        $private.requestSuccess = function requestSuccess( data, xhr ) {
+        $private.requestUserSuccess = function requestUserSuccess( data, xhr ) {
             this.props.onSearchUserSubmit( data );
         };
 

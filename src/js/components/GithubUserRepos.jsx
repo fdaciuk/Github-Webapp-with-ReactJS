@@ -11,13 +11,14 @@ define([ 'react' ], function( React ) {
 
         $public.render = function render() {
             var repos = this.props.reposdata;
-            var reposNode;
+            var reposNode = [];
 
             if( ! repos ) {
                 return null;
             }
 
             reposNode = $private.getRepos( repos );
+            console.log( reposNode );
 
             return (
                 <div className="repolist clearfix">

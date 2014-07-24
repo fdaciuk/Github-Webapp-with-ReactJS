@@ -20,7 +20,7 @@ define([
             var renderHTML = $private.renderOk.call( this, user, repos );
 
             if( ! user.name ) {
-                renderHTML = <h2>No User Info Found</h2>;
+                renderHTML = $private.renderFail();
             }
 
             return (
@@ -40,6 +40,10 @@ define([
                     <GithubUserRepos reposdata={repos} />
                 </div>
             );
+        };
+
+        $private.renderFail = function renderFail() {
+            return <h2>No User Info Found</h2>;
         };
 
         // ------------------------------

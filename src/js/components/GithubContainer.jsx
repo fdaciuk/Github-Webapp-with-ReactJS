@@ -26,8 +26,8 @@ define([
             return (
                 <div className="clearfix">
                     <SearchBar
-                        onSearchUserSubmit={$private.onSearchUserSubmit.bind( this )}
-                        onSearchReposSubmit={$private.onSearchReposSubmit.bind( this )} />
+                        onSearchUserSubmit={$private.handleSearchUserSubmit.bind( this )}
+                        onSearchReposSubmit={$private.handleSearchReposSubmit.bind( this )} />
 
                     <GithubAPIDataContainer
                         userdata={this.state.user}
@@ -39,13 +39,13 @@ define([
 
         // ------------------------------
 
-        $private.onSearchUserSubmit = function onSearchUserSubmit( user ) {
+        $private.handleSearchUserSubmit = function handleSearchUserSubmit( user ) {
             this.setState({ user: user });
         };
 
         // ------------------------------
 
-        $private.onSearchReposSubmit = function onSearchReposSubmit( repos ) {
+        $private.handleSearchReposSubmit = function handleSearchReposSubmit( repos ) {
             this.setState({ repos: repos });
         };
 
