@@ -1,1 +1,0 @@
-define(function(){"use strict";var n=function(){var n={};return n};return n});
