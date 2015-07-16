@@ -10,10 +10,10 @@ var minifycss = require( 'gulp-minify-css' );
 var jshint = require( 'gulp-jshint' );
 
 var paths = {
-    src_js : './src/js/**/*.{js,jsx}',
-    dest_js : './public/js',
-    src_css : './src/css/**/*.css',
-    dest_css : './public/css'
+  src_js : './src/js/**/*.{js,jsx}',
+  dest_js : './public/js',
+  src_css : './src/css/**/*.css',
+  dest_css : './public/css'
 };
 
 gulp.task( 'react', function() {
@@ -33,11 +33,11 @@ gulp.task( 'react', function() {
 
     var errors = file.jshint.results.map(function (data) {
       if (data.error) {
-        return "(" + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
+        return '(' + data.error.line + ':' + data.error.character + ') ' + data.error.reason;
       }
-    }).join("\n");
+    }).join('\n');
 
-    return file.relative + " (" + file.jshint.results.length + " errors)\n" + errors;
+    return file.relative + ' (' + file.jshint.results.length + ' errors)\n' + errors;
   }) )
   .pipe( uglify() )
   .pipe( gulp.dest( paths.dest_js ) )
