@@ -1,45 +1,39 @@
 /** @jsx React.DOM */
 
 define([ 'react' ], function( React ) {
-    'use strict';
+  'use strict';
 
-    var GithubUserRepos = function() {
-        var $public = {};
-        var $private = {};
+  function GithubUserRepos() {
+    var $public = {};
+    var $private = {};
 
-        // ------------------------------
+    $public.render = function render() {
+      var repos = this.props.reposdata;
+      var reposNode = [];
 
-        $public.render = function render() {
-            var repos = this.props.reposdata;
-            var reposNode = [];
+      if( ! repos ) {
+        return null;
+      }
 
-            if( ! repos ) {
-                return null;
-            }
+      reposNode = $private.getRepos( repos );
+      console.log( reposNode );
 
-            reposNode = $private.getRepos( repos );
-            console.log( reposNode );
-
-            return (
-                <div className="repolist clearfix">
-                    <p><strong>Repos list:</strong></p>
-                    <ul>{reposNode}</ul>
-                </div>
-            );
-        };
-
-        // ------------------------------
-
-        $private.getRepos = function getRepos( repos ) {
-            return repos.map(function( repo ) {
-                return ( <li><a href={repo.html_url} target="_blank">{repo.name}</a></li> );
-            });
-        };
-
-        // ------------------------------
-
-        return $public;
+      return (
+        <div className="repolist clearfix">
+          <p><strong>Repos list:</strong></p>
+          <ul>{reposNode}</ul>
+        </div>
+      );
     };
 
-    return React.createClass( GithubUserRepos() );
+    $private.getRepos = function getRepos( repos ) {
+      return repos.map(function( repo ) {
+        return ( <li><a href={repo.html_url} target="_blank">{repo.name}</a></li> );
+      });
+    };
+
+    return $public;
+  }
+
+  return React.createClass( GithubUserRepos() );
 });

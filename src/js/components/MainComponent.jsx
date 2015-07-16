@@ -1,13 +1,13 @@
 /** @jsx React.DOM */
 
 define([
-    'react',
-    'components/GithubContainer'
+  'react',
+  'components/GithubContainer'
 ], function( React, GithubContainer ) {
-    'use strict';
+  'use strict';
 
-    React.renderComponent(
-        <GithubContainer />,
-        document.querySelector( '.content' )
-    );
+  React.renderComponent(
+    <GithubContainer />,
+    document.querySelector( '.content' )
+  );
 });

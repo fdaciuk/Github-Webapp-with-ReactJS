@@ -1,25 +1,24 @@
 ;(function( window ) {
-    'use strict';
+  'use strict';
 
-    var getLocation = function getLocation() {
-        var url = window.location.href;
-        if( url.indexOf( 'index.html' ) > -1 ) {
-            return url.split( '/index.html' ).join( '' );
-        }
+  var getLocation = function getLocation() {
+    var url = window.location.href;
+    if( url.indexOf( 'index.html' ) > -1 ) {
+      return url.split( '/index.html' ).join( '' );
+    }
+    return '.';
+  };
 
-        return '.';
-    };
+  requirejs.config({
+    baseUrl: getLocation() + '/public/js',
+    paths : {
+      react : 'vendor/react.min',
+      Ajax : 'vendor/ajax.min',
+      components : 'components'
+    }
+  });
 
-    requirejs.config({
-        baseUrl: getLocation() + '/public/js',
-        paths : {
-            react          : 'vendor/react.min',
-            modules        : 'modules',
-            components     : 'components'
-        }
-    });
-
-    requirejs([ 'react' ], function() {
-        requirejs([ 'components/MainComponent' ]);
-    });
+  requirejs([ 'react' ], function() {
+    requirejs([ 'components/MainComponent' ]);
+  });
 })( window );

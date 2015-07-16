@@ -1,30 +1,26 @@
 /** @jsx React.DOM */
 
 define([ 'react' ], function( React ) {
-    'use strict';
+  'use strict';
 
-    var GithubUserHeader = function() {
-        var $public = {};
+  function GithubUserHeader() {
+    var $public = {};
 
-        // ------------------------------
+    $public.render = function render() {
+      var user = this.props.userdata;
 
-        $public.render = function render() {
-            var user = this.props.userdata;
-
-            return (
-                <h2>
-                    {user.name}
-                    <span className="smallname">
-                        (@<a href={user.html_url} target="_blank">{user.login}</a>)
-                    </span>
-                </h2>
-            );
-        };
-
-        // ------------------------------
-
-        return $public;
+      return (
+        <h2>
+          {user.name}
+          <span className="smallname">
+            (@<a href={user.html_url} target="_blank">{user.login}</a>)
+          </span>
+        </h2>
+      );
     };
 
-    return React.createClass( GithubUserHeader() );
+    return $public;
+  }
+
+  return React.createClass( GithubUserHeader() );
 });
